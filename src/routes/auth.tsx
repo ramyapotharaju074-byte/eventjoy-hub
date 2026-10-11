@@ -9,7 +9,7 @@ import { lovable } from "@/integrations/lovable";
 import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>) => ({ mode: s.mode === "organizer" ? ("organizer" as const) : undefined }),
+  validateSearch: (s: Record<string, unknown>): { mode?: "organizer" } => (s["mode"] === "organizer" ? { mode: "organizer" } : {}),
   head: () => ({
     meta: [
       { title: "Sign in — EpicEventz" },

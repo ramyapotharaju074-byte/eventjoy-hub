@@ -34,8 +34,8 @@ type Campaign = {
 };
 
 function publicDb() {
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY!;
-  return createClient<Database>(process.env.SUPABASE_URL!, key, {
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
+  return createClient<Database>(process.env["SUPABASE_URL"]!, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
     global: {
       fetch: (input, init) => {
@@ -227,7 +227,7 @@ export const submitSupport = createServerFn({ method: "POST" })
       Status: "New",
     });
     const [c] = await sfQuery<{ CaseNumber: string }>(`SELECT CaseNumber FROM Case WHERE Id = '${id}'`);
-    return { caseNumber: c?.CaseNumber ?? id };
+    return { caseNumber: String(c?.CaseNumber ?? id) };
   });
 
 // ---------- Organizer ----------

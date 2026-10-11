@@ -1,8 +1,8 @@
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/salesforce";
 
 function headers() {
-  const lovable = process.env.LOVABLE_API_KEY;
-  const sf = process.env.SALESFORCE_API_KEY;
+  const lovable = process.env["LOVABLE_API_KEY"];
+  const sf = process.env["SALESFORCE_API_KEY"];
   if (!lovable || !sf) throw new Error("Salesforce connection is not configured");
   return {
     Authorization: `Bearer ${lovable}`,
