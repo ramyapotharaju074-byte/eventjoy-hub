@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { BarChart3, MessageSquareHeart, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EventCard } from "@/components/EventCard";
-import { listEvents } from "@/lib/events.functions";
+import { eventsQuery } from "@/lib/queries";
 import hero from "@/assets/hero.jpg";
 
-export const eventsQuery = queryOptions({ queryKey: ["events"], queryFn: () => listEvents() });
+
 
 export const Route = createFileRoute("/")({
   head: () => ({

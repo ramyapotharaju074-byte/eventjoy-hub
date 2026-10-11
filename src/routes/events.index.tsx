@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { EventCard } from "@/components/EventCard";
-import { eventsQuery } from "./index";
+import { eventsQuery } from "@/lib/queries";
 
 export const Route = createFileRoute("/events/")({
   head: () => ({
