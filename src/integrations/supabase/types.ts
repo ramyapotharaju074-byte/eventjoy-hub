@@ -14,16 +14,159 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      event_details: {
+        Row: {
+          campaign_id: string
+          capacity: number
+          category: string
+          city: string
+          created_at: string
+          organizer_id: string
+          price: number
+          venue: string
+        }
+        Insert: {
+          campaign_id: string
+          capacity?: number
+          category?: string
+          city?: string
+          created_at?: string
+          organizer_id: string
+          price?: number
+          venue?: string
+        }
+        Update: {
+          campaign_id?: string
+          capacity?: number
+          category?: string
+          city?: string
+          created_at?: string
+          organizer_id?: string
+          price?: number
+          venue?: string
+        }
+        Relationships: []
+      }
+      feedback: {
+        Row: {
+          author_name: string
+          campaign_id: string
+          comment: string
+          created_at: string
+          id: string
+          rating: number
+          user_id: string
+        }
+        Insert: {
+          author_name?: string
+          campaign_id: string
+          comment?: string
+          created_at?: string
+          id?: string
+          rating: number
+          user_id: string
+        }
+        Update: {
+          author_name?: string
+          campaign_id?: string
+          comment?: string
+          created_at?: string
+          id?: string
+          rating?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          buyer_email: string
+          buyer_name: string
+          campaign_id: string
+          created_at: string
+          event_name: string
+          id: string
+          quantity: number
+          salesforce_opportunity_id: string | null
+          total: number
+          user_id: string
+        }
+        Insert: {
+          buyer_email: string
+          buyer_name: string
+          campaign_id: string
+          created_at?: string
+          event_name: string
+          id?: string
+          quantity: number
+          salesforce_opportunity_id?: string | null
+          total: number
+          user_id: string
+        }
+        Update: {
+          buyer_email?: string
+          buyer_name?: string
+          campaign_id?: string
+          created_at?: string
+          event_name?: string
+          id?: string
+          quantity?: number
+          salesforce_opportunity_id?: string | null
+          total?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "organizer" | "attendee"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +293,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["organizer", "attendee"],
+    },
   },
 } as const
