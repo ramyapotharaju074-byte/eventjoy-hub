@@ -21,7 +21,7 @@ export const Route = createFileRoute("/support")({
   component: SupportPage,
 });
 
-const faqs = [
+const faqs: [string, string][] = [
   ["Where are my tickets?", "Sign in and open My tickets. Every order is linked to your account."],
   ["How many tickets can I buy?", "Up to 10 tickets per order, as long as seats remain."],
   ["Can I leave a review?", "Yes — anyone who bought a ticket can rate the event once."],
